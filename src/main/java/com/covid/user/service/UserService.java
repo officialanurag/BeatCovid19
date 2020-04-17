@@ -15,7 +15,7 @@ public class UserService {
 UserRepository repos;
 @Autowired
 Autogenerate generate;
-public User create(User user) {
+public User create(User user) {	
 	user.setCreated_at(new Date());
 	String user_id=generate.getuser_id(user);
 	String token=generate.getToken();

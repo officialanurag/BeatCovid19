@@ -4,7 +4,9 @@ import java.util.Date;
 
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class User {
@@ -13,8 +15,10 @@ private String User_id;
 @NotNull
 private String full_name;
 @NotNull
+@Indexed(unique=true)
 private Long phone;
 @NotNull
+@Indexed(unique=true)
 private String email;
 @NotNull
 private Long adhaar_id;
