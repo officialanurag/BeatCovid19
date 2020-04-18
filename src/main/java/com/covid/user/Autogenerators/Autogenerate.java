@@ -12,10 +12,9 @@ public class Autogenerate {
 		return user_id;
 	}
 	
-	
 	public String getToken() {
-		int random=(int)(Math.random() *1000);
-		String token="beatCovid19 " + random; 
+		int random=(int)(Math.random() *98999);
+		String token="beatCovid19-" + random; 
 		return token;
 	}
 
