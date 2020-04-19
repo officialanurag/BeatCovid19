@@ -1,8 +1,10 @@
 package com.covid.user.service;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.covid.user.Autogenerators.Autogenerate;
@@ -24,6 +26,23 @@ public User create(User user) {
 	repos.insert(user);
 	return user;
 }
+
+
+public User findUser(String User_id) {
+	System.out.println(" Iam here");
+	return repos.findById(User_id).orElseThrow(null);
+	
+}
+
+public User findByEmail(String email, String password) {
+	User user=repos.findByEmail(email).orElseThrow(null);
+	String myPass=user.getPassword();
+if(myPass.equals(password)) {
+	return user;
+} 
+else return null;
+}
+
 
 
 }

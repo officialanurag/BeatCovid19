@@ -11,6 +11,7 @@ public class BeatCovid19Application {
 	
 	public static void main(String[] args) {
 		SpringApplication.run(BeatCovid19Application.class, args);
+		System.out.println("App is running.....");
 	}
 	@Bean
 	public ValidatingMongoEventListener validatingMongoEventListener() {
