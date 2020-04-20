@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.covid.user.model.LoginForm;
 import com.covid.user.model.User;
 import com.covid.user.service.UserService;
 
@@ -30,9 +31,10 @@ return service.findUser(user_id);
 }
 
 @PostMapping("/login")
-public User login(@RequestParam("email") String email, @RequestParam("password") String password) {
-
-return service.findByEmail(email,password);
+public User login(@RequestBody LoginForm login) {
+	System.out.println("hello world");
+	System.out.println(login);
+return service.findByEmail(login);
 
 }
 

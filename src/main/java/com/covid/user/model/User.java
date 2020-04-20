@@ -8,6 +8,9 @@ import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.bol.secure.Encrypted;
+
 @Document
 public class User {
 @Id
@@ -21,6 +24,7 @@ private Long phone;
 @Indexed(unique=true)
 private String email;
 @NotNull
+@Encrypted
 private String password;
 public String getPassword() {
 	return password;
