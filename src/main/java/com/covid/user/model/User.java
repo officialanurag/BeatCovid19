@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.bol.secure.Encrypted;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Document
 public class User {
@@ -26,6 +27,7 @@ private String email;
 @NotNull
 @Encrypted
 private String password;
+@JsonIgnore
 public String getPassword() {
 	return password;
 }
