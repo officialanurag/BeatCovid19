@@ -13,7 +13,18 @@ import com.mongodb.MongoWriteException;
 
 @ControllerAdvice
 public class UserExceptionHandler {
-	
+	@ExceptionHandler
+	public ResponseEntity<UserException> NullPointer(NullPointerException e, HttpServletResponse response){
+		int status = response.getStatus();
+		System.out.println(status);
+		int random=(int)(Math.random() *10000);
+		String request_id= "covid19"+random;
+		
+			UserException errors=new UserException(HttpStatus.BAD_REQUEST.value(),random,"User Not Found",request_id);
+			return new ResponseEntity<UserException>(errors,HttpStatus.BAD_REQUEST);
+			
+	}
+
 @ExceptionHandler
 public ResponseEntity<UserException> handleException(Exception e, HttpServletResponse response){
 	int status = response.getStatus();
@@ -24,7 +35,6 @@ public ResponseEntity<UserException> handleException(Exception e, HttpServletRes
 		UserException errors=new UserException(500,random,"Duplicate Entry",request_id);
 		return new ResponseEntity<UserException>(errors,HttpStatus.INTERNAL_SERVER_ERROR);
 
-		
 	}
 	else {
 	int status_code=HttpStatus.BAD_REQUEST.value();
