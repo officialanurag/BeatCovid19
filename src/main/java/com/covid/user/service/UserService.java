@@ -30,7 +30,6 @@ public class UserService {
 
 
 	public User findUser(String User_id) {
-		System.out.println(" Iam here");
 		return repos.findById(User_id).orElseThrow(null);
      }
 
