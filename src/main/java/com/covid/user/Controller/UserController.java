@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.covid.user.Repository.UserRepository;
 import com.covid.user.model.LoginForm;
 import com.covid.user.model.User;
 import com.covid.user.service.UserService;
@@ -23,7 +24,8 @@ public class UserController {
 @PostMapping("/create")
 public User create(@RequestBody User user) {
 	return service.create(user);
-}
+
+	}
 
 @GetMapping("/{user_id}")
 public User findUser_id(@PathVariable("user_id") String user_id) {

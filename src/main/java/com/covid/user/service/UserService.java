@@ -24,13 +24,12 @@ public class UserService {
 		String token=generate.getToken();
 		user.setCurrent_token(token);
 		user.setUser_id(user_id);
-		repos.insert(user);
+	    repos.insert(user);
 		return user;
 	}
 
 
 	public User findUser(String User_id) {
-		System.out.println(" Iam here");
 		return repos.findById(User_id).orElseThrow(null);
      }
 

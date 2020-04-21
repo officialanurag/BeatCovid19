@@ -11,6 +11,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.bol.secure.Encrypted;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Document
 public class User {
@@ -31,6 +33,8 @@ private String password;
 public String getPassword() {
 	return password;
 }
+
+@JsonProperty
 public void setPassword(String password) {
 	this.password = password;
 }
