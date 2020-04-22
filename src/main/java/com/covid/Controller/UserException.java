@@ -1,4 +1,4 @@
-package com.covid.user.Controller;
+package com.covid.Controller;
 
 public class UserException {
 private int status;
