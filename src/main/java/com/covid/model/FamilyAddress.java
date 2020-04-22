@@ -1,7 +1,7 @@
 package com.covid.model;
 
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Component;
-
 @Component
 public class FamilyAddress {
 private String address_line_1;

@@ -17,10 +17,8 @@ public class Family {
 	private String family_id;
 	@NotNull
 	private String family_name;
-	@Autowired
 	@NotNull
 	private FamilyAddress address;
-	@Autowired
 	@NotNull
 	private List <Members> members;
 	@NotNull

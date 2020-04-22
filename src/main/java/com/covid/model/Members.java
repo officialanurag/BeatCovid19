@@ -1,9 +1,5 @@
 package com.covid.model;
-
-import java.util.ArrayList;
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 @Component
 public class Members {
@@ -11,7 +7,6 @@ public class Members {
     private String member_name;
 	private int member_age;
     private String member_gender;
-    @Autowired
     private List<health_issues> health_issues;
 	public String getMember_id() {
 		return member_id;
