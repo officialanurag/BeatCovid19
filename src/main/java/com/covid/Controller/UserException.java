@@ -1,4 +1,4 @@
-package com.covid.user.Controller;
+package com.covid.Controller;
 
 public class UserException {
 private int status;
@@ -36,6 +36,4 @@ public String getRequest_id() {
 public void setRequest_id(String request_id) {
 	this.request_id = request_id;
 }
-
-
 }
