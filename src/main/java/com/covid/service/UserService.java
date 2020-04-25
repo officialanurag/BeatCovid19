@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.WebRequest;
 
 import com.covid.Autogenerators.Autogenerate;
 import com.covid.Repository.UserRepository;
@@ -33,7 +35,7 @@ public class UserService {
 		return repos.findById(User_id).orElseThrow(null);
      }
 
-	public User findByEmail(LoginForm login) {
+	public User findByEmail(LoginForm login,WebRequest request) {
 		String email=login.getEmail();
 		String password=login.getPassword();
 		User user=repos.findByEmail(email).orElseThrow(null);
@@ -41,10 +43,10 @@ public class UserService {
 		if(myPass.equals(password)) {
 			user.setCurrent_token(generate.getToken());
 			repos.save(user);
-			
+			request.setAttribute("user_id",user.getUser_id(), RequestAttributes.SCOPE_SESSION);
 			return user;
 		} 
-		else return null;
+		else throw new NullPointerException();
 	}
 
 
