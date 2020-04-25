@@ -2,10 +2,12 @@ package com.covid.service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.function.Supplier;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.context.request.WebRequest;
 
 import com.covid.Autogenerators.Autogenerate;
 import com.covid.Repository.FamilyRepository;
@@ -19,6 +21,7 @@ public class FamilyService {
 	FamilyRepository repos;
 	@Autowired
 	Autogenerate generate;
+	
 	public Family create(Family family) {	
 		String family_id=generate.getUUId();
 		family.setFamily_id(family_id);
@@ -28,13 +31,13 @@ public class FamilyService {
 		return family;
 	}
 
-	public Family find(String family_id) {
-		return repos.findById(family_id).orElseThrow(null);
+	public Family find(String family_id) {	
+		return repos.findById(family_id).orElseThrow(()->new NullPointerException());
 	}
 
 	public Family updatemember(Members members,String family_id, String member_id, String user_id) {
 		String id=null;
-		Family family=repos.findById(family_id).orElseThrow(null);
+		Family family=repos.findById(family_id).orElseThrow(()->new NullPointerException());
 		List<Members> memList  =family.getMembers();
 		for(Members i:memList ) {
 			id=i.getMember_id();
@@ -56,9 +59,4 @@ public class FamilyService {
 		repos.save(family);
 		return family;
 	}
-
-
-
-
-
 }

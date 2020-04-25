@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.WebRequest;
 
 import com.covid.Repository.UserRepository;
 import com.covid.model.LoginForm;
@@ -33,10 +34,8 @@ return service.findUser(user_id);
 }
 
 @PostMapping("/login")
-public User login(@RequestBody LoginForm login) {
-	System.out.println("hello world");
-	System.out.println(login);
-return service.findByEmail(login);
+public User login(@RequestBody LoginForm login,WebRequest request) {
+return service.findByEmail(login,request);
 
 }
 
